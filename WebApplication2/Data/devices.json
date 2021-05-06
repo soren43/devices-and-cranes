@@ -1,0 +1,62 @@
+[
+  {
+    "deleted": false,
+    "id": "device03",
+    "crane_id": "crane1",
+    "s_n": "1234500",
+    "model": "hawkeye 12345",
+    "description": "That’s a 12345device",
+    "created": "01/10/2014 13:45:01",
+    "updated": "06/05/2021 09:49:01"
+  },
+  {
+    "deleted": false,
+    "id": "device04",
+    "crane_id": "crane2",
+    "s_n": "5234934444",
+    "model": "hawkeye 7",
+    "description": "That’s a super device",
+    "created": "01/10/2020 08:45:01",
+    "updated": "01/12/2020 10:00:01"
+  },
+  {
+    "deleted": true,
+    "id": "device08",
+    "crane_id": "crane4",
+    "s_n": "5234934888",
+    "model": "hawkeye 8",
+    "description": "That’s a great device",
+    "created": "01/10/2000 13:45:01",
+    "updated": "01/12/2019 23:32:01"
+  },
+  {
+    "deleted": true,
+    "id": "device10",
+    "crane_id": "crane1",
+    "s_n": "5234955000",
+    "model": "hawkeye 5",
+    "description": "That’s a device",
+    "created": "06/05/2021 08:59:39",
+    "updated": "06/05/2021 08:59:39"
+  },
+  {
+    "deleted": false,
+    "id": "diff id",
+    "crane_id": "crane1",
+    "s_n": "5234955885",
+    "model": "hawkeye 5",
+    "description": "That’s a bad device",
+    "created": "01/10/2014 13:45:01",
+    "updated": "06/05/2021 09:37:05"
+  },
+  {
+    "deleted": false,
+    "id": "device10",
+    "crane_id": "crane1",
+    "s_n": "5234955000",
+    "model": "hawkeye 5",
+    "description": "That’s a device",
+    "created": "01/10/2014 13:45:01",
+    "updated": "06/05/2021 09:49:00"
+  }
+]
