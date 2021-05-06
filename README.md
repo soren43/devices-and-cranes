@@ -5,6 +5,10 @@ A `.Net 5.0` WebApi project.
 - Use this template(github) or clone/download to your local workplace.
 - Download the latest .Net SDK and Visual Studio/Code.
 
+## Environment Variables
+The service will read its configuration from environment variables. 
+If any of the variables (DEVICES_JSON, CRANES_JSON, HTTP_PORT) are missing the server should not start.
+
 ## Running tests
 The solution contains a small UnitTests project.
 the main tests can be found in a JSON file named: **"Tests.postman_collection"**
