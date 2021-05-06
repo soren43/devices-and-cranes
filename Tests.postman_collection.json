@@ -1,0 +1,541 @@
+{
+	"info": {
+		"_postman_id": "3cef3d52-95a9-4531-8051-f259d04b481b",
+		"name": "Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Devices ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/Devices",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Health",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/Health",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Devices - CraneIdValidation test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"1\",\r\n  \"crane_id\": \"missing_crane_id\",\r\n  \"s_n\": \"string\",\r\n  \"model\": \"string\",\r\n  \"description\": \"string\",\r\n  \"created\": \"string\",\r\n  \"updated\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Devices - ValidateProperties test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"model\": \"string\",\r\n  \"description\": \"string\",\r\n  \"created\": \"string\",\r\n  \"updated\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Devices - ConflictValidation test1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"id\": \"device03\",\r\n    \"crane_id\": \"crane1\",\r\n    \"s_n\": \"diff s_n\",\r\n    \"model\": \"hawkeye 5\",\r\n    \"description\": \"That’s a bad device\",\r\n    \"created\": \"01/10/2014 13:45:01\",\r\n    \"updated\": \"06/05/2021 08:32:06\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Devices - insert new Valid Device test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"device10\",\r\n    \"crane_id\": \"crane1\",\r\n    \"s_n\": \"5234955000\",\r\n    \"model\": \"hawkeye 5\",\r\n    \"description\": \"That’s a device\",\r\n    \"created\": \"01/10/2014 13:45:01\",\r\n    \"updated\": \"06/05/2021 08:32:06\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Devices deleted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/Devices/deleted",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"deleted"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Device By Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/Devices/device04",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"device04"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Devices - update existing Device test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"device03\",\r\n    \"crane_id\": \"crane1\",\r\n    \"s_n\": \"1234500\",\r\n    \"model\": \"hawkeye 12345\",\r\n    \"description\": \"That’s a 12345device\",\r\n    \"created\": \"01/10/2014 13:45:01\",\r\n    \"updated\": \"06/05/2021 08:32:06\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices/device03",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"device03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Devices - checkIfDeviceExists Validation test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"device03\",\r\n    \"crane_id\": \"crane1\",\r\n    \"s_n\": \"1234500\",\r\n    \"model\": \"hawkeye 12345\",\r\n    \"description\": \"That’s a 12345device\",\r\n    \"created\": \"01/10/2014 13:45:01\",\r\n    \"updated\": \"06/05/2021 08:32:06\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices/device0345646",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"device0345646"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete checkIfDeviceExists Before delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/Devices/device033",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"device033"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Success If Exists ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44362/Devices/device03",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"device03"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Devices - restore Deleted Device test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices/deleted/device03/restore",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"deleted",
+						"device03",
+						"restore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Devices - Check If Device Exists before restore test",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44362/Devices/deleted/device03888/restore",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44362",
+					"path": [
+						"Devices",
+						"deleted",
+						"device03888",
+						"restore"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
